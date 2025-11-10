@@ -26,4 +26,9 @@ public abstract class MenuItems {
     }
 
     public abstract String getDescription();
+
+    @Override
+    public String toString() {
+        return name + " (" + size + ") - $" + String.format("%.2f", price);
+    }
 }

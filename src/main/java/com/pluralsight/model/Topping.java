@@ -10,4 +10,23 @@ public class Topping {
         this.premium = premium;
         this.priceBySize = priceBySize;
     }
+    public String getName() { return name; }
+    public boolean isPremium() { return premium; }
+
+    public double getPriceForSize(String size) {
+        return switch (size.toLowerCase()) {
+            case "small" -> {
+                yield priceBySize[0];
+            }
+            case "medium" -> {
+                yield priceBySize[1];
+            }
+            case "large" -> {
+                yield priceBySize[2];
+            }
+            default -> {
+                yield 0;
+            }
+        };
+    }
 }
