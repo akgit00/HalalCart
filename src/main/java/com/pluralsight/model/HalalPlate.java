@@ -19,4 +19,30 @@ public class HalalPlate extends MenuItem {
         this.protein = protein;
         this.special = special;
     }
+    //topping
+    public void addTopping(Topping t) {
+        toppings.add(t);
+    }
+
+    //sauce
+    public void addSauce(String s) {
+        sauces.add(s);
+    }
+
+    // define and calculate the price
+    public void calculatePrice() {
+        double basePrice = switch (size.toLowerCase()) {
+            case "small" -> 8.0;
+            case "medium" -> 10.0;
+            case "large" -> 12.0;
+            default -> 0;
+        };
+
+        for (Topping t : toppings)
+            basePrice += t.getPriceForSize(size);
+
+        if (special) basePrice += 2.0; // extra cost for special
+
+        this.price = basePrice;
+    }
 }
