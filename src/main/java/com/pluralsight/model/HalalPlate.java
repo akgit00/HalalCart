@@ -1,14 +1,14 @@
 package com.pluralsight.model;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HalalPlate extends MenuItem {
+public class HalalPlate extends MenuItems {
     //rice or wrap
     private String baseType;
     //chicken, lamb, falafel, combo
     private String protein;
+    private List<Topping> toppings = new ArrayList<>();
     private List<String> sauces = new ArrayList<>();
     //extra meat or double sauce
     private boolean special;
