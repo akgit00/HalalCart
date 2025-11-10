@@ -29,4 +29,8 @@ public class Topping {
             }
         };
     }
+    @Override
+    public String toString() {
+        return name + (premium ? " (Premium)" : "");
+    }
 }

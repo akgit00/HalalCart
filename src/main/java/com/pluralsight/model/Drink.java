@@ -1,7 +1,5 @@
 package com.pluralsight.model;
 
-import java.awt.*;
-
 public class Drink extends MenuItems {
     public Drink(String size, String type) {
         super(type + " Drink", size, switch (size.toLowerCase()) {
@@ -16,5 +14,10 @@ public class Drink extends MenuItems {
             }
             default -> 0;
         });
+    }
+
+    @Override
+    public String getDescription() {
+        return name + " (" + size + ")";
     }
 }

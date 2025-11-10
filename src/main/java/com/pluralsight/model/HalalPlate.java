@@ -19,6 +19,7 @@ public class HalalPlate extends MenuItem {
         this.protein = protein;
         this.special = special;
     }
+
     //topping
     public void addTopping(Topping t) {
         toppings.add(t);
@@ -29,7 +30,7 @@ public class HalalPlate extends MenuItem {
         sauces.add(s);
     }
 
-    // define and calculate the price
+    //define and calculate the price
     public void calculatePrice() {
         double basePrice = switch (size.toLowerCase()) {
             case "small" -> 8.0;
@@ -44,5 +45,10 @@ public class HalalPlate extends MenuItem {
         if (special) basePrice += 2.0; // extra cost for special
 
         this.price = basePrice;
+    }
+
+    @Override
+    public String getDescription() {
+        return size + " " + baseType + " with " + protein + ", Toppings: " + toppings + ", Sauces: " + sauces;
     }
 }
