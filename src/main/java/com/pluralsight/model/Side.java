@@ -4,4 +4,9 @@ public class Side extends MenuItems {
     public Side(String type) {
         super(type, "regular", 1.50);
     }
+
+    @Override
+    public String getDescription() {
+        return name;
+    }
 }

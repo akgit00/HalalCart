@@ -13,4 +13,9 @@ public class Order {
     public void addItem(MenuItems item) {
         items.add(item);
     }
+    public double getTotal() {
+        double total = 0;
+        for (MenuItems item : items) total += item.getPrice();
+        return total;
+    }
 }
