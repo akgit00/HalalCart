@@ -18,4 +18,12 @@ public class Order {
         for (MenuItems item : items) total += item.getPrice();
         return total;
     }
+
+    public List<MenuItems> getItems() {
+        return items;
+    }
+
+    public void saveReceipt() {
+        String filename = "receipts/" + new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date()) + ".txt";
+    }
 }
