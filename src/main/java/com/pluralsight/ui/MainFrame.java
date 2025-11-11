@@ -1,4 +1,10 @@
 package com.pluralsight.ui;
 
-public class MainFrame {
+import javax.swing.*;
+import java.awt.*;
+
+import com.pluralsight.model.Order;
+
+public class MainFrame extends JFrame {
+
 }
