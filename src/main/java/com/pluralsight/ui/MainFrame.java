@@ -28,10 +28,13 @@ public class MainFrame extends JFrame {
         setVisible(true);
     }
 
-    //panel for new orders go here
+    //panel for new orders go here (will come back to this later)
 
 
-    //add a panel to go back to home page
+    //add a method to go back to home page
+    public void goHome() {
+        cardLayout.show(mainPanel, "HOME");
+    }
 
 
     //add a panel to finish your order and return to home page
