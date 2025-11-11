@@ -25,5 +25,20 @@ public class HomePanel extends JPanel {
         newOrderButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
         exitButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
 
+        buttonPanel.add(newOrderButton);
+        buttonPanel.add(exitButton);
+
+        add(buttonPanel, BorderLayout.CENTER);
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(100, 150, 100, 150));
+
+        //event listeners
+        newOrderButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.startNewOrder();
+            }
+        });
+
+        exitButton.addActionListener(e -> System.exit(0));
     }
 }

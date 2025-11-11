@@ -28,7 +28,13 @@ public class MainFrame extends JFrame {
         setVisible(true);
     }
 
-    //panel for new orders go here (will come back to this later)
+    //panel for new orders go here
+    public void startNewOrder() {
+        currentOrder = new Order();
+        OrderPanel orderPanel = new OrderPanel(this, currentOrder);
+        mainPanel.add(orderPanel, "ORDER");
+        cardLayout.show(mainPanel, "ORDER");
+    }
 
 
     //add a method to go back to home page
