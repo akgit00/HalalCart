@@ -15,5 +15,15 @@ public class HomePanel extends JPanel {
         title.setBorder(BorderFactory.createEmptyBorder(40, 0, 20, 0));
         add(title, BorderLayout.NORTH);
 
+        //new buttons for a new order and to exit panel
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(2, 1, 10, 10));
+
+        JButton newOrderButton = new JButton("New Order");
+        JButton exitButton = new JButton("Exit");
+
+        newOrderButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        exitButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
+
     }
 }
