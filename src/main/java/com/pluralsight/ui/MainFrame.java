@@ -21,6 +21,11 @@ public class MainFrame extends JFrame {
         mainPanel = new JPanel(cardLayout);
 
         //add home panel here
+        HomePanel homePanel = new HomePanel(this);
+        mainPanel.add(homePanel, "HOME");
+
+        add(mainPanel);
+        setVisible(true);
     }
 
     //panel for new orders go here
