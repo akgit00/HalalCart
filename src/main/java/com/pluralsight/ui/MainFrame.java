@@ -45,5 +45,7 @@ public class MainFrame extends JFrame {
 
 
     //add a method to display the main panel
-
+    public void showPanel(String name) {
+        cardLayout.show(mainPanel, name);
     }
+}
