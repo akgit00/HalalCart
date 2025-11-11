@@ -37,7 +37,11 @@ public class MainFrame extends JFrame {
     }
 
 
-    //add a panel to finish your order and return to home page
+    //add a method to finish your order and return to home page
+    public void endOrder() {
+        currentOrder = null;
+        goHome();
+    }
 
 
     //add a method to display the main panel
