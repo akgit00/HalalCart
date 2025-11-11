@@ -19,6 +19,19 @@ public class MainFrame extends JFrame {
 
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
+
+        //add home panel here
     }
+
+    //panel for new orders go here
+
+
+    //add a panel to go back to home page
+
+
+    //add a panel to finish your order and return to home page
+
+
+    //add a method to display the main panel
 
     }
