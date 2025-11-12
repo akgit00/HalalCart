@@ -24,15 +24,21 @@ public class PlateDialog extends JDialog {
 
     public PlateDialog(Frame owner) {
         super(owner, "Customize Your Halal Plate", true);
-        setLayout(new BorderLayout(10,10));
+        setLayout(new BorderLayout(10, 10));
         setSize(200, 400);
         setLocationRelativeTo(owner);
 
         //panel to choose plate options go here
+        JPanel form = new JPanel();
+        form.setLayout(new BoxLayout(form, BoxLayout.Y_AXIS));
 
         //size goes here
+        sizeBox = new JComboBox<>(new String[]{"Small", "Medium", "Large"});
+        form.add(labeled("Size:", sizeBox));
 
         //base type goes here
+        baseBox = new JComboBox<>(new String[]{"Rice", "Wrap"});
+        form.add(labeled("Base:", baseBox));
 
         //protein options go here
 
@@ -43,3 +49,12 @@ public class PlateDialog extends JDialog {
         //sauces go here
 
         //special options go here
+    }
+
+    private JPanel labeled(String text, JComponent comp) {
+        JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        p.add(new JLabel(text));
+        p.add(comp);
+        return p;
+    }
+}
