@@ -57,6 +57,8 @@ public class OrderPanel extends JPanel {
         add(totalLabel, BorderLayout.SOUTH);
 
         //button action listeners go here
+    }
+}
 
 
         //--------helper methods go here--------
