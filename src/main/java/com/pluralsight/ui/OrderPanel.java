@@ -27,8 +27,14 @@ public class OrderPanel extends JPanel {
         add(title, BorderLayout.NORTH);
 
         //item list go here
+        listModel = new DefaultListModel<>();
+        itemList = new JList<>(listModel);
+        itemList.setFont(new Font("Monospaced", Font.PLAIN, 14));
+        JScrollPane scrollPane = new JScrollPane(itemList);
+        add(scrollPane, BorderLayout.CENTER);
 
         //buttons go here
+        JPanel buttonPanel = new JPanel(new GridLayout(3, 2, 10, 10));
 
 
         //label to show the total goes here
