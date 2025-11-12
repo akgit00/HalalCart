@@ -27,6 +27,7 @@ public class DrinkDialog extends JDialog {
 
         form.add(labeled("Size:", sizeBox));
         form.add(labeled("Flavor:", flavorBox));
+        add(form, BorderLayout.CENTER);
     }
 
     private JPanel labeled(String text, JComponent c) {
@@ -34,5 +35,15 @@ public class DrinkDialog extends JDialog {
         p.add(new JLabel(text));
         p.add(c);
         return p;
+    }
+
+    //what happens when the customer checks a box while selecting a drink?
+    private void onConfirm(ActionEvent e) {
+        String size = ((String) sizeBox.getSelectedItem()).toLowerCase();
+        String flavor = (String) flavorBox.getSelectedItem();
+
+        drink = new Drink(size, flavor);
+        confirmed = true;
+        dispose();
     }
 }
