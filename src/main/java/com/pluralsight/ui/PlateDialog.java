@@ -41,8 +41,17 @@ public class PlateDialog extends JDialog {
         form.add(labeled("Base:", baseBox));
 
         //protein options go here
+        proteinBox = new JComboBox<>(new String[]{"Chicken", "Lamb", "Falafel", "Combo"});
+        form.add(labeled("Protein:", proteinBox));
 
         //standard topping options go here
+        String[] regularToppings = {"Lettuce","Tomato","Onion","Pickles"};
+        toppingChecks = new JCheckBox[regularToppings.length];
+        form.add(new JLabel("Regular Toppings:"));
+        for (int i=0;i<regularToppings.length;i++){
+            toppingChecks[i] = new JCheckBox(regularToppings[i]);
+            form.add(toppingChecks[i]);
+        }
 
         //special topping options go here
 
