@@ -59,6 +59,9 @@ public class OrderPanel extends JPanel {
         addPlateBtn.addActionListener(e -> addPlate());
         addDrinkBtn.addActionListener(e -> addDrink());
         addSideBtn.addActionListener(e -> addSide());
+        checkoutBtn.addActionListener(e -> checkout());
+        cancelBtn.addActionListener(e -> cancelOrder());
+        backBtn.addActionListener(e -> frame.goHome());
     }
 
     //--------helper methods go here--------
