@@ -54,10 +54,28 @@ public class PlateDialog extends JDialog {
         }
 
         //special topping options go here
+        String[] premiumToppings = {"Extra Meat","Cheese","Egg"};
+        premiumChecks = new JCheckBox[premiumToppings.length];
+        form.add(new JLabel("Premium Toppings:"));
+        for (int i=0;i<premiumToppings.length;i++){
+            premiumChecks[i] = new JCheckBox(premiumToppings[i]);
+            form.add(premiumChecks[i]);
+        }
 
         //sauces go here
+        String[] sauces = {"White Sauce","Hot Sauce","BBQ","Garlic","Tahini"};
+        sauceChecks = new JCheckBox[sauces.length];
+        form.add(new JLabel("Sauces:"));
+        for (int i=0;i<sauces.length;i++){
+            sauceChecks[i] = new JCheckBox(sauces[i]);
+            form.add(sauceChecks[i]);
+        }
 
         //special options go here
+        specialBox = new JCheckBox("Special (Extra meat / Double sauce + $2)");
+        form.add(specialBox);
+
+        add(new JScrollPane(form), BorderLayout.CENTER);
     }
 
     private JPanel labeled(String text, JComponent comp) {
