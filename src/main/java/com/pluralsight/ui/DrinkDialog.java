@@ -24,5 +24,15 @@ public class DrinkDialog extends JDialog {
 
         sizeBox = new JComboBox<>(new String[]{"Small", "Medium", "Large"});
         flavorBox = new JComboBox<>(new String[]{"Coke", "Sprite", "Water", "Fanta", "Iced Tea"});
+
+        form.add(labeled("Size:", sizeBox));
+        form.add(labeled("Flavor:", flavorBox));
+    }
+
+    private JPanel labeled(String text, JComponent c) {
+        JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        p.add(new JLabel(text));
+        p.add(c);
+        return p;
     }
 }
