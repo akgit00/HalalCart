@@ -10,10 +10,19 @@ public class DrinkDialog extends JDialog {
     private Drink drink;
     private boolean confirmed = false;
 
+    private final JComboBox<String> sizeBox;
+    private final JComboBox<String> flavorBox;
+
     public DrinkDialog(Frame owner) {
         super(owner, "Select a Drink", true);
         setSize(300, 200);
         setLayout(new BorderLayout(10, 10));
         setLocationRelativeTo(owner);
+
+        JPanel form = new JPanel();
+        form.setLayout(new BoxLayout(form, BoxLayout.Y_AXIS));
+
+        sizeBox = new JComboBox<>(new String[]{"Small", "Medium", "Large"});
+        flavorBox = new JComboBox<>(new String[]{"Coke", "Sprite", "Water", "Fanta", "Iced Tea"});
     }
 }
