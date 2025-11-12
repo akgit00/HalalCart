@@ -57,6 +57,8 @@ public class OrderPanel extends JPanel {
 
         //button action listeners go here
         addPlateBtn.addActionListener(e -> addPlate());
+        addDrinkBtn.addActionListener(e -> addDrink());
+        addSideBtn.addActionListener(e -> addSide());
     }
 
     //--------helper methods go here--------
@@ -79,6 +81,17 @@ public class OrderPanel extends JPanel {
         if (dialog.isConfirmed()) {
             Drink drink = dialog.getDrink();
             order.addItem(drink);
+            refreshList();
+        }
+    }
+
+    private void addSide() {
+        SideDialog dialog = new SideDialog((Frame) SwingUtilities.getWindowAncestor(this));
+        dialog.setVisible(true);
+
+        if (dialog.isConfirmed()) {
+            Side side = dialog.getSide();
+            order.addItem(side);
             refreshList();
         }
     }
