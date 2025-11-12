@@ -35,9 +35,26 @@ public class OrderPanel extends JPanel {
 
         //buttons go here
         JPanel buttonPanel = new JPanel(new GridLayout(3, 2, 10, 10));
+        JButton addPlateBtn = new JButton("🍛 Add Plate");
+        JButton addDrinkBtn = new JButton("🥤 Add Drink");
+        JButton addSideBtn = new JButton("🍟 Add Side");
+        JButton checkoutBtn = new JButton("💵 Checkout");
+        JButton cancelBtn = new JButton("❌ Cancel Order");
+        JButton backBtn = new JButton("⬅ Home");
 
+        buttonPanel.add(addPlateBtn);
+        buttonPanel.add(addDrinkBtn);
+        buttonPanel.add(addSideBtn);
+        buttonPanel.add(checkoutBtn);
+        buttonPanel.add(cancelBtn);
+        buttonPanel.add(backBtn);
+
+        add(buttonPanel, BorderLayout.EAST);
 
         //label to show the total goes here
+        totalLabel = new JLabel("Total: $0.00", SwingConstants.RIGHT);
+        totalLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
+        add(totalLabel, BorderLayout.SOUTH);
 
         //button action listeners go here
 
