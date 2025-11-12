@@ -93,5 +93,28 @@ public class PlateDialog extends JDialog {
         boolean special = specialBox.isSelected();
 
         plate = new HalalPlate(size.toLowerCase(), base, protein, special);
+
+        // regular toppings
+        for (JCheckBox cb : toppingChecks) {
+            if (cb.isSelected()) {
+                plate.addTopping(new Topping(cb.getText(), false, new double[]{0, 0, 0}));
+            }
+        }
+
+        // premium toppings
+        for (JCheckBox cb : premiumChecks) {
+            if (cb.isSelected()) {
+                plate.addTopping(new Topping(cb.getText(), true, new double[]{0.75, 1.5, 2.25}));
+            }
+        }
+
+        // sauces
+        for (JCheckBox cb : sauceChecks) {
+            if (cb.isSelected()) plate.addSauce(cb.getText());
+        }
+
+        plate.calculatePrice();
+        confirmed = true;
+        dispose();
     }
 }
