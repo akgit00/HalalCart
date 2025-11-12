@@ -76,6 +76,16 @@ public class PlateDialog extends JDialog {
         form.add(specialBox);
 
         add(new JScrollPane(form), BorderLayout.CENTER);
+
+        JPanel btnPanel = new JPanel();
+        JButton confirmBtn = new JButton("Add Plate");
+        JButton cancelBtn = new JButton("Cancel");
+        btnPanel.add(confirmBtn);
+        btnPanel.add(cancelBtn);
+        add(btnPanel, BorderLayout.SOUTH);
+
+        confirmBtn.addActionListener(this::onConfirm);
+        cancelBtn.addActionListener(e -> dispose());
     }
 
     private JPanel labeled(String text, JComponent comp) {
@@ -117,4 +127,6 @@ public class PlateDialog extends JDialog {
         confirmed = true;
         dispose();
     }
+    public boolean isConfirmed(){ return confirmed; }
+    public HalalPlate getPlate(){ return plate; }
 }
