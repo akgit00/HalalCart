@@ -72,6 +72,17 @@ public class OrderPanel extends JPanel {
         }
     }
 
+    private void addDrink() {
+        DrinkDialog dialog = new DrinkDialog((Frame) SwingUtilities.getWindowAncestor(this));
+        dialog.setVisible(true);
+
+        if (dialog.isConfirmed()) {
+            Drink drink = dialog.getDrink();
+            order.addItem(drink);
+            refreshList();
+        }
+    }
+
     private void refreshList() {
         listModel.clear();
         for (MenuItems item : order.getItems()) {

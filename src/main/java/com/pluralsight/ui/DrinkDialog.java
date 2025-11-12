@@ -57,4 +57,6 @@ public class DrinkDialog extends JDialog {
         confirmed = true;
         dispose();
     }
+    public boolean isConfirmed() { return confirmed; }
+    public Drink getDrink() { return drink; }
 }
