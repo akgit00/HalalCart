@@ -45,28 +45,28 @@ public class PlateDialog extends JDialog {
         form.add(labeled("Protein:", proteinBox));
 
         //standard topping options go here
-        String[] regularToppings = {"Lettuce","Tomato","Onion","Pickles"};
+        String[] regularToppings = {"Lettuce", "Tomato", "Onion", "Pickles"};
         toppingChecks = new JCheckBox[regularToppings.length];
         form.add(new JLabel("Regular Toppings:"));
-        for (int i=0;i<regularToppings.length;i++){
+        for (int i = 0; i < regularToppings.length; i++) {
             toppingChecks[i] = new JCheckBox(regularToppings[i]);
             form.add(toppingChecks[i]);
         }
 
         //special topping options go here
-        String[] premiumToppings = {"Extra Meat","Cheese","Egg"};
+        String[] premiumToppings = {"Extra Meat", "Cheese", "Egg"};
         premiumChecks = new JCheckBox[premiumToppings.length];
         form.add(new JLabel("Premium Toppings:"));
-        for (int i=0;i<premiumToppings.length;i++){
+        for (int i = 0; i < premiumToppings.length; i++) {
             premiumChecks[i] = new JCheckBox(premiumToppings[i]);
             form.add(premiumChecks[i]);
         }
 
         //sauces go here
-        String[] sauces = {"White Sauce","Hot Sauce","BBQ","Garlic","Tahini"};
+        String[] sauces = {"White Sauce", "Hot Sauce", "BBQ", "Garlic", "Tahini"};
         sauceChecks = new JCheckBox[sauces.length];
         form.add(new JLabel("Sauces:"));
-        for (int i=0;i<sauces.length;i++){
+        for (int i = 0; i < sauces.length; i++) {
             sauceChecks[i] = new JCheckBox(sauces[i]);
             form.add(sauceChecks[i]);
         }
@@ -83,5 +83,15 @@ public class PlateDialog extends JDialog {
         p.add(new JLabel(text));
         p.add(comp);
         return p;
+    }
+
+    //what happens when the customer checks a box while making a plate?
+    private void onConfirm(ActionEvent e) {
+        String size = (String) sizeBox.getSelectedItem();
+        String base = (String) baseBox.getSelectedItem();
+        String protein = (String) proteinBox.getSelectedItem();
+        boolean special = specialBox.isSelected();
+
+        plate = new HalalPlate(size.toLowerCase(), base, protein, special);
     }
 }
