@@ -50,7 +50,6 @@ public class OrderPanel extends JPanel {
         buttonPanel.add(backBtn);
 
         add(buttonPanel, BorderLayout.EAST);
-
         //label to show the total goes here
         totalLabel = new JLabel("Total: $0.00", SwingConstants.RIGHT);
         totalLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
@@ -58,7 +57,25 @@ public class OrderPanel extends JPanel {
 
         //button action listeners go here
     }
+
+    //--------helper methods go here--------
+
+    private void addPlate() {
+        PlateDialog dialog = new PlateDialog((Frame) SwingUtilities.getWindowAncestor(this));
+        dialog.setVisible(true);
+
+        if (dialog.isConfirmed()) {
+            HalalPlate plate = dialog.getPlate();
+            order.addItem(plate);
+            refreshList();
+        }
+    }
+
+    private void refreshList() {
+        listModel.clear();
+        for (MenuItems item : order.getItems()) {
+            listModel.addElement(item.toString());
+        }
+        totalLabel.setText("Total: $" + String.format("%.2f", order.getTotal()));
+    }
 }
-
-
-        //--------helper methods go here--------
