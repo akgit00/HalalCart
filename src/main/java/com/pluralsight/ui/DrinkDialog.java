@@ -28,8 +28,19 @@ public class DrinkDialog extends JDialog {
         form.add(labeled("Size:", sizeBox));
         form.add(labeled("Flavor:", flavorBox));
         add(form, BorderLayout.CENTER);
+
+        JPanel btns = new JPanel();
+        JButton addBtn = new JButton("Add Drink");
+        JButton cancelBtn = new JButton("Cancel");
+        btns.add(addBtn);
+        btns.add(cancelBtn);
+        add(btns, BorderLayout.SOUTH);
+
+        addBtn.addActionListener(this::onConfirm);
+        cancelBtn.addActionListener(e -> dispose());
     }
 
+    //this will help properly label boxes
     private JPanel labeled(String text, JComponent c) {
         JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT));
         p.add(new JLabel(text));

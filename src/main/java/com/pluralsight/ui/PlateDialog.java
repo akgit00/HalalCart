@@ -88,6 +88,7 @@ public class PlateDialog extends JDialog {
         cancelBtn.addActionListener(e -> dispose());
     }
 
+    //this will help properly label boxes
     private JPanel labeled(String text, JComponent comp) {
         JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT));
         p.add(new JLabel(text));
