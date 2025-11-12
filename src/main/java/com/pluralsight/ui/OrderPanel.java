@@ -96,6 +96,27 @@ public class OrderPanel extends JPanel {
         }
     }
 
+    private void checkout() {
+        order.saveReceipt();
+        JOptionPane.showMessageDialog(this,
+                "Receipt saved!\nTotal: $" + String.format("%.2f", order.getTotal()),
+                "Order Complete",
+                JOptionPane.INFORMATION_MESSAGE);
+        frame.endOrder();
+    }
+
+    private void cancelOrder() {
+        int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "Cancel this order?",
+                "Confirm",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (confirm == JOptionPane.YES_OPTION) {
+            frame.endOrder();
+        }
+    }
+
     private void refreshList() {
         listModel.clear();
         for (MenuItems item : order.getItems()) {
