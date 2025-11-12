@@ -25,6 +25,16 @@ public class SideDialog extends JDialog {
         form.add(labeled("Side Item:", typeBox));
 
         add(form, BorderLayout.CENTER);
+
+        JPanel btns = new JPanel();
+        JButton addBtn = new JButton("Add Side");
+        JButton cancelBtn = new JButton("Cancel");
+        btns.add(addBtn);
+        btns.add(cancelBtn);
+        add(btns, BorderLayout.SOUTH);
+
+        addBtn.addActionListener(this::onConfirm);
+        cancelBtn.addActionListener(e -> dispose());
     }
 
     private JPanel labeled(String text, JComponent c) {
@@ -33,4 +43,14 @@ public class SideDialog extends JDialog {
         p.add(c);
         return p;
     }
+
+    private void onConfirm(ActionEvent e) {
+        String type = (String) typeBox.getSelectedItem();
+        side = new Side(type);
+        confirmed = true;
+        dispose();
+    }
+
+    public boolean isConfirmed() { return confirmed; }
+    public Side getSide() { return side; }
 }
