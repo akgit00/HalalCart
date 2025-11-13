@@ -8,4 +8,13 @@ import java.util.Date;
 
 public class PrivateDataLogger {
 
+    private static final File EMAIL_LOG = new File("private_logs/emails_log.csv");
+    private static final File RECEIPT_LOG = new File("private_logs/receipts_log.csv");
+
+    static {
+        File dir = new File("private_logs");
+        dir.mkdirs();
+
+    }
+
 }
