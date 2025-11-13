@@ -40,6 +40,7 @@ public class PrivateDataLogger {
         }
     }
 
+    //this method is for formatting the date in the receipt log
     public static void logReceipt(Order order, File receiptFile) {
         String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         StringBuilder items = new StringBuilder();
