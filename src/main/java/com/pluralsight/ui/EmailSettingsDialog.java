@@ -71,5 +71,20 @@ public class EmailSettingsDialog extends JDialog {
             JOptionPane.showMessageDialog(this, "Error saving settings: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    //this is a static helper for other classes to use
+    public static String[] getSavedCredentials() {
+        try {
+            if (SETTINGS_FILE.exists()) {
+                java.util.List<String> lines = Files.readAllLines(SETTINGS_FILE.toPath());
+                if (lines.size() >= 2) {
+                    return new String[]{lines.get(0).trim(), lines.get(1).trim()};
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 
