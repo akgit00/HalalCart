@@ -26,4 +26,9 @@ public class CheckoutDialog extends JDialog {
         add(confirmBtn, BorderLayout.SOUTH);
     }
 
+    //this will handle sending out the confirmation email
+    private void confirmCheckout(ActionEvent e) {
+        order.saveReceipt();
+
     }
+}
