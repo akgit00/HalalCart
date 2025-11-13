@@ -16,6 +16,10 @@ public class CheckoutDialog extends JDialog {
         super(owner, "Checkout", true);
         this.order = order;
 
+        setSize(400, 250);
+        setLocationRelativeTo(owner);
+        setLayout(new BorderLayout(10, 10));
+
         JLabel title = new JLabel("Checkout", SwingConstants.CENTER);
         title.setFont(new Font("SansSerif", Font.BOLD, 22));
         add(title, BorderLayout.NORTH);
