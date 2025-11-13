@@ -61,5 +61,25 @@ public class EmailSender {
             //receipt attachment here
             MimeBodyPart attachmentPart = new MimeBodyPart();
             attachmentPart.attachFile(receiptFile);
-    }
+
+            //combine email sections
+            Multipart multipart = new MimeMultipart();
+            multipart.addBodyPart(textPart);
+            multipart.addBodyPart(attachmentPart);
+            message.setContent(multipart);
+
+            //send email to customer
+            Transport.send(message);
+            System.out.println("Receipt email sent successfully to " + recipientEmail);
+
+            //first catch in case authentication failed
+        } catch (AuthenticationFailedException e) {
+            System.err.println("Gmail authentication failed: Check your app password.");
+            throw e;
+
+            //catch in case of invalid character encoding
+
+            //catch in case the receipt is unable to be sent
+
+        }
 }
