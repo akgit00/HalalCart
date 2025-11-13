@@ -52,7 +52,7 @@ public class EmailSender {
             textPart.setText("""
                     Thank you for ordering from the Halal NYC Cart!
                     Your meal is being prepared fresh and delicious.
-
+                    
                     Please find your receipt attached below.
                     
                     Come back soon!
@@ -76,10 +76,14 @@ public class EmailSender {
         } catch (AuthenticationFailedException e) {
             System.err.println("Gmail authentication failed: Check your app password.");
             throw e;
-
-            //catch in case of invalid character encoding
-
-            //catch in case the receipt is unable to be sent
-
+        }//catch in case of invalid character encoding
+        catch (UnsupportedEncodingException e) {
+            System.err.println("Invalid character encoding for sender name.");
+            throw e;
+        }//catch in case the receipt is unable to be sent
+        catch (Exception e) {
+            System.err.println("❌ Failed to send receipt: " + e.getMessage());
+            throw e;
         }
+    }
 }

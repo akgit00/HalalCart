@@ -53,6 +53,21 @@ public class EmailSettingsDialog extends JDialog {
     //this method is meant to load user credentials
     private void loadCredentials() {
         try {
+            if (SETTINGS_FILE.exists()) {
+                java.util.List<String> lines = Files.readAllLines(SETTINGS_FILE.toPath());
+                if (lines.size() >= 2) {
+                    emailField.setText(lines.get(0).trim());
+                    passwordField.setText(lines.get(1).trim());
+                }
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error loading saved credentials.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    //this method is to save user credentials
+    private void saveCredentials() {
+        try {
             File dir = new File("private_logs");
             dir.mkdirs();
 
@@ -61,13 +76,10 @@ public class EmailSettingsDialog extends JDialog {
                 out.println(new String(passwordField.getPassword()).trim());
             }
 
-            //if user credentials are saved successfully
             JOptionPane.showMessageDialog(this, "Email settings saved successfully!", "Saved", JOptionPane.INFORMATION_MESSAGE);
             dispose();
 
-        }
-        //if user credentials aren't saved successfully
-        catch (IOException e) {
+        } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "Error saving settings: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
