@@ -46,3 +46,12 @@ public class EmailSettingsDialog extends JDialog {
         btnPanel.add(cancelBtn);
         add(btnPanel, BorderLayout.SOUTH);
 
+        // Load existing credentials if any
+        loadCredentials();
+    }
+
+    //this method is meant to load user credentials
+    private void loadCredentials() {
+
+    }
+
