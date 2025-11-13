@@ -14,3 +14,21 @@ public class EmailSender {
         this.senderEmail = senderEmail;
         this.senderPassword = senderPassword;
     }
+
+    public void sendReceipt(String recipientEmail, File receiptFile) throws Exception {
+        //configure gmail SMTP
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        //authenticate with gmail
+        Session session = Session.getInstance(props, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(senderEmail, senderPassword);
+            }
+        });
+    }
+}
