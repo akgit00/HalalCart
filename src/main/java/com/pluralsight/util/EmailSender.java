@@ -46,5 +46,20 @@ public class EmailSender {
 
             //subject line
             message.setSubject("Your Halal NYC Cart Receipt");
+
+            //email body
+            MimeBodyPart textPart = new MimeBodyPart();
+            textPart.setText("""
+                    Thank you for ordering from the Halal NYC Cart!
+                    Your meal is being prepared fresh and delicious.
+
+                    Please find your receipt attached below.
+                    
+                    Come back soon!
+                    """);
+
+            //receipt attachment here
+            MimeBodyPart attachmentPart = new MimeBodyPart();
+            attachmentPart.attachFile(receiptFile);
     }
 }
