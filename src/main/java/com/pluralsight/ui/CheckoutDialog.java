@@ -35,6 +35,11 @@ public class CheckoutDialog extends JDialog {
     private File getLatestReceiptFile() {
         File dir = new File("receipts");
         File[] files = dir.listFiles((d, n) -> n.startsWith("receipt_"));
-
+        if (files == null || files.length == 0) return null;
+        File latest = files[0];
+        for (File f : files)
+            if (f.lastModified() > latest.lastModified()) latest = f;
+        return latest;
     }
+
 }
