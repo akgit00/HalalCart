@@ -31,4 +31,10 @@ public class CheckoutDialog extends JDialog {
         order.saveReceipt();
 
     }
+
+    private File getLatestReceiptFile() {
+        File dir = new File("receipts");
+        File[] files = dir.listFiles((d, n) -> n.startsWith("receipt_"));
+
+    }
 }
