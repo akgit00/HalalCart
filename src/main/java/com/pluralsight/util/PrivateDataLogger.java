@@ -14,6 +14,16 @@ public class PrivateDataLogger {
     static {
         File dir = new File("private_logs");
         dir.mkdirs();
+        try {
+            if (!EMAIL_LOG.exists()) {
+                try (PrintWriter out = new PrintWriter(new FileWriter(EMAIL_LOG, true))) {
+                    out.println("Timestamp,CustomerEmail,ReceiptFile");
+                }
+            }
+            if (!RECEIPT_LOG.exists()) {
+                try (PrintWriter out = new PrintWriter(new FileWriter(RECEIPT_LOG, true))) {
+                    out.println("Timestamp,Items,Total");
+
 
     }
 
