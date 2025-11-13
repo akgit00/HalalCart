@@ -48,6 +48,9 @@ public class EmailSettingsDialog extends JDialog {
 
         // Load existing credentials if any
         loadCredentials();
+
+        saveBtn.addActionListener(e -> saveCredentials());
+        cancelBtn.addActionListener(e -> dispose());
     }
 
     //this method is meant to load user credentials
