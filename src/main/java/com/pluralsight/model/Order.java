@@ -1,7 +1,9 @@
 package com.pluralsight.model;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,13 +27,19 @@ public class Order {
     }
 
     public void saveReceipt() {
-        String filename = "receipts/" + new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date()) + ".txt";
-        try (FileWriter writer = new FileWriter(filename)) {
-            writer.write("Halal NYC Cart Order\n");
-            writer.write("=====================\n");
-            for (MenuItems item : items)
-                writer.write(item + "\n");
-            writer.write("\nTotal: $" + String.format("%.2f", getTotal()));
+        File dir = new File("receipts");
+        dir.mkdirs();
+        String timestamp = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());
+        File file = new File(dir, "receipt_" + timestamp + ".txt");
+        try (PrintWriter out = new PrintWriter(file)) {
+            out.println("Halal NYC Cart Receipt");
+            out.println("----------------------");
+            for (MenuItems item : items) {
+                out.println(item);
+            }
+            out.println("----------------------");
+            out.printf("Total: $%.2f%n", getTotal());
+            out.println("Thank you for your order!");
         } catch (IOException e) {
             e.printStackTrace();
         }

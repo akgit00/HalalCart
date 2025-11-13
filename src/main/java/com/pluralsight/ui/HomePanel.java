@@ -21,12 +21,15 @@ public class HomePanel extends JPanel {
 
         JButton newOrderButton = new JButton("New Order");
         JButton exitButton = new JButton("Exit");
+        JButton emailSettingsButton = new JButton("Email Settings");
 
         newOrderButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
         exitButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        emailSettingsButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
 
         buttonPanel.add(newOrderButton);
         buttonPanel.add(exitButton);
+        buttonPanel.add(emailSettingsButton);
 
         add(buttonPanel, BorderLayout.CENTER);
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(100, 150, 100, 150));
@@ -38,6 +41,8 @@ public class HomePanel extends JPanel {
                 frame.startNewOrder();
             }
         });
+
+        emailSettingsButton.addActionListener(e -> new EmailSettingsDialog(frame).setVisible(true));
 
         exitButton.addActionListener(e -> System.exit(0));
     }
