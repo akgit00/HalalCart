@@ -80,6 +80,7 @@ public class EmailSettingsDialog extends JDialog {
                 if (lines.size() >= 2) {
                     return new String[]{lines.get(0).trim(), lines.get(1).trim()};
                 }
+
             }
         } catch (IOException e) {
             e.printStackTrace();
