@@ -17,5 +17,13 @@ public class CheckoutDialog extends JDialog {
         title.setFont(new Font("SansSerif", Font.BOLD, 22));
         add(title, BorderLayout.NORTH);
 
+        JLabel totalLabel = new JLabel("Total: $" + String.format("%.2f", order.getTotal()), SwingConstants.CENTER);
+        totalLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        add(totalLabel, BorderLayout.CENTER);
+
+        JButton confirmBtn = new JButton("Confirm & Email Receipt");
+        confirmBtn.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        add(confirmBtn, BorderLayout.SOUTH);
     }
-}
+
+    }
