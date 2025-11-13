@@ -27,6 +27,8 @@ public class CheckoutDialog extends JDialog {
         JButton confirmBtn = new JButton("Confirm & Email Receipt");
         confirmBtn.setFont(new Font("SansSerif", Font.PLAIN, 18));
         add(confirmBtn, BorderLayout.SOUTH);
+
+        confirmBtn.addActionListener(this::confirmCheckout);
     }
 
     //this will handle sending out the confirmation email
@@ -56,7 +58,17 @@ public class CheckoutDialog extends JDialog {
                             "Your receipt has been emailed to " + email,
                             "Email Sent", JOptionPane.INFORMATION_MESSAGE);
                 }
-
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Error sending email: " + ex.getMessage(),
+                        "Email Failed", JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
+            }
+        }
+        JOptionPane.showMessageDialog(this,
+                "Order confirmed! Receipt saved locally.",
+                "Success", JOptionPane.INFORMATION_MESSAGE);
+        dispose();
     }
 
     private File getLatestReceiptFile() {
