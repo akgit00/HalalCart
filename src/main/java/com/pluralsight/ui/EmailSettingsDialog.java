@@ -13,3 +13,8 @@ public class EmailSettingsDialog extends JDialog {
     private final JPasswordField passwordField;
 
     public EmailSettingsDialog(Frame owner) {
+        super(owner, "Email Settings", true);
+
+        setLayout(new BorderLayout(10, 10));
+        setSize(400, 250);
+        setLocationRelativeTo(owner);
