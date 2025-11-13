@@ -40,4 +40,17 @@ public class PrivateDataLogger {
         }
     }
 
+    public static void logReceipt(Order order, File receiptFile) {
+        String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        StringBuilder items = new StringBuilder();
+        for (MenuItems item : order.getItems()) {
+            items.append(item.getName()).append("(").append(item.getSize()).append("); ");
+        }
+        try (PrintWriter out = new PrintWriter(new FileWriter(RECEIPT_LOG, true))) {
+            out.printf("%s,\"%s\",%.2f%n", timestamp, items, order.getTotal());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
