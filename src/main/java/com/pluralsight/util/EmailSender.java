@@ -30,5 +30,21 @@ public class EmailSender {
                 return new PasswordAuthentication(senderEmail, senderPassword);
             }
         });
+
+        try {
+            //create the message
+            Message message = new MimeMessage(session);
+
+            //the "from" field (business Gmail + display name)
+            message.setFrom(new InternetAddress(senderEmail, "Halal NYC Cart"));
+
+            //the "reply to" for potential support email
+            message.setReplyTo(InternetAddress.parse(senderEmail));
+
+            //the "to" field (the customer)
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
+
+            //subject line
+            message.setSubject("Your Halal NYC Cart Receipt");
     }
 }
