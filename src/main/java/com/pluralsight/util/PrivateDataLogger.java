@@ -23,8 +23,21 @@ public class PrivateDataLogger {
             if (!RECEIPT_LOG.exists()) {
                 try (PrintWriter out = new PrintWriter(new FileWriter(RECEIPT_LOG, true))) {
                     out.println("Timestamp,Items,Total");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-
+    //this method is for formatting the email file
+    public static void logEmail(String email, File receiptFile) {
+        String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        try (PrintWriter out = new PrintWriter(new FileWriter(EMAIL_LOG, true))) {
+            out.printf("%s,%s,%s%n", timestamp, email, receiptFile.getName());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
