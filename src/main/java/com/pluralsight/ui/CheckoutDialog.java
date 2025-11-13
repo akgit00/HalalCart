@@ -1,6 +1,7 @@
 package com.pluralsight.ui;
 
 import com.pluralsight.model.Order;
+import com.pluralsight.util.EmailSender;
 import com.pluralsight.util.PrivateDataLogger;
 
 import javax.swing.*;
@@ -38,6 +39,23 @@ public class CheckoutDialog extends JDialog {
                 "Enter your email address to receive your receipt:",
                 "Email Receipt",
                 JOptionPane.PLAIN_MESSAGE);
+        if (email != null && !email.trim().isEmpty()) {
+            try {
+                String[] creds = EmailSettingsDialog.getSavedCredentials();
+                if (creds == null) {
+                    JOptionPane.showMessageDialog(this,
+                            "Email not configured. Please open 'Email Settings' first.",
+                            "Missing Settings", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    String sender = creds[0];
+                    String password = creds[1];
+                    new EmailSender(sender, password).sendReceipt(email.trim(), latestReceipt);
+                    PrivateDataLogger.logEmail(email.trim(), latestReceipt);
+
+                    JOptionPane.showMessageDialog(this,
+                            "Your receipt has been emailed to " + email,
+                            "Email Sent", JOptionPane.INFORMATION_MESSAGE);
+                }
 
     }
 
