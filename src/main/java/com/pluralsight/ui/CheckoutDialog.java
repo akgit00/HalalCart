@@ -1,6 +1,8 @@
 package com.pluralsight.ui;
 
 import com.pluralsight.model.Order;
+import com.pluralsight.util.PrivateDataLogger;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -29,6 +31,13 @@ public class CheckoutDialog extends JDialog {
     //this will handle sending out the confirmation email
     private void confirmCheckout(ActionEvent e) {
         order.saveReceipt();
+        File latestReceipt = getLatestReceiptFile();
+        PrivateDataLogger.logReceipt(order, latestReceipt);
+
+        String email = JOptionPane.showInputDialog(this,
+                "Enter your email address to receive your receipt:",
+                "Email Receipt",
+                JOptionPane.PLAIN_MESSAGE);
 
     }
 
