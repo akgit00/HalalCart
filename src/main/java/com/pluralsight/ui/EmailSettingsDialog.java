@@ -52,6 +52,24 @@ public class EmailSettingsDialog extends JDialog {
 
     //this method is meant to load user credentials
     private void loadCredentials() {
+        try {
+            File dir = new File("private_logs");
+            dir.mkdirs();
 
+            try (PrintWriter out = new PrintWriter(new FileWriter(SETTINGS_FILE))) {
+                out.println(emailField.getText().trim());
+                out.println(new String(passwordField.getPassword()).trim());
+            }
+
+            //if user credentials are saved successfully
+            JOptionPane.showMessageDialog(this, "Email settings saved successfully!", "Saved", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+
+        }
+        //if user credentials aren't saved successfully
+        catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error saving settings: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
+}
 
