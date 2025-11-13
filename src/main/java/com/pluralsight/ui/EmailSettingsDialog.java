@@ -28,3 +28,21 @@ public class EmailSettingsDialog extends JDialog {
         JPanel formPanel = new JPanel(new GridLayout(2, 2, 10, 10));
         formPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
+        //panels for user email address and password
+        formPanel.add(new JLabel("Gmail Address:"));
+        emailField = new JTextField();
+        formPanel.add(emailField);
+
+        formPanel.add(new JLabel("App Password:"));
+        passwordField = new JPasswordField();
+        formPanel.add(passwordField);
+
+        add(formPanel, BorderLayout.CENTER);
+
+        JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        JButton saveBtn = new JButton("💾 Save");
+        JButton cancelBtn = new JButton("Cancel");
+        btnPanel.add(saveBtn);
+        btnPanel.add(cancelBtn);
+        add(btnPanel, BorderLayout.SOUTH);
+
