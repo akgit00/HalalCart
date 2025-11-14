@@ -54,7 +54,7 @@ public class PlateDialog extends JDialog {
         }
 
         //special topping options go here
-        String[] premiumToppings = {"Extra Meat", "Cheese", "Egg"};
+        String[] premiumToppings = {"Extra Meat", "Spicy beef kebab", "Grilled Shrimp"};
         premiumChecks = new JCheckBox[premiumToppings.length];
         form.add(new JLabel("Premium Toppings:"));
         for (int i = 0; i < premiumToppings.length; i++) {
@@ -72,7 +72,7 @@ public class PlateDialog extends JDialog {
         }
 
         //special options go here
-        specialBox = new JCheckBox("Special (Extra meat / Double sauce + $2)");
+        specialBox = new JCheckBox("Special (Hummus + $2)");
         form.add(specialBox);
 
         add(new JScrollPane(form), BorderLayout.CENTER);

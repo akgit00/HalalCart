@@ -19,8 +19,8 @@ public class HomePanel extends JPanel {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(2, 1, 10, 10));
 
-        JButton newOrderButton = new JButton("New Order");
-        JButton exitButton = new JButton("Exit");
+        JButton newOrderButton = new JButton("New Order 🧾");
+        JButton exitButton = new JButton("Exit ❌");
         JButton emailSettingsButton = new JButton("Email Settings");
 
         newOrderButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
